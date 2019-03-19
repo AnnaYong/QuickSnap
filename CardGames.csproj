@@ -117,6 +117,7 @@
     </None>
     <None Include="Resources\fonts\Chunk.ttf" />
     <None Include="Resources\sounds\Slap.mp3" />
+    <None Include="Resources\sounds\Slap2.mp3" />
   </ItemGroup>
   <Target Name="CopyFiles">
     <Copy SourceFiles="@(MacLibraryFiles)" DestinationFolder="$(OutDir)" />
