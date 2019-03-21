@@ -11,9 +11,9 @@ namespace CardGames
             Bitmap cards;
             cards = SwinGame.LoadBitmapNamed ("Cards", "Cards.png");
             SwinGame.BitmapSetCellDetails (cards, 82, 110, 13, 5, 53);      // set the cells in the bitmap to match the cards
-			SwinGame.LoadFontNamed ("GameFont","Chunkfive.otf", 24);
+			SwinGame.LoadFontNamed ("GameFont","Chunk.ttf", 15);
 			SwinGame.LoadSoundEffectNamed ("Slap", "Slap.wav");
-			SwinGame.LoadSoundEffectNamed ("Punch", "Punch.wav");
+			SwinGame.LoadSoundEffectNamed ("error", "error.wav");
         }
 
 		/// <summary>
@@ -35,12 +35,11 @@ namespace CardGames
 
 			if (myGame.IsStarted) 
 			{
-
+				SwinGame.PlaySoundEffect ("Slap");
 				if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT) &&
 				   SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
 				{
-					SwinGame.LoadSoundEffectNamed ("Punch", "Punch.wav");
-					SwinGame.PlaySoundEffect ("Punch");//TODO: add sounds effects
+					SwinGame.PlaySoundEffect ("error");//TODO: add sounds effects
 				}
 
 				else if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT))
@@ -68,8 +67,8 @@ namespace CardGames
 			if (top != null)
 			{
 				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.RoyalBlue, 0, 20);
-				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.White ,0, 30);
-				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.White ,0, 40);
+				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.White ,"GameFont",0, 30);
+				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.White , "GameFont",0, 50);
 				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 570, 220);
 			}
 			else
