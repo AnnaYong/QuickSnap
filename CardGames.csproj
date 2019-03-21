@@ -182,7 +182,7 @@
     <None Include="Resources\SwinGame.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\sounds\Slap2.wav" />
+    <None Include="Resources\sounds\Slap.wav" />
     <None Include="Resources\sounds\Punch.wav" />
   </ItemGroup>
   <Target Name="CopyFiles">

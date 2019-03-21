@@ -12,10 +12,12 @@ namespace CardGames
             cards = SwinGame.LoadBitmapNamed ("Cards", "Cards.png");
             SwinGame.BitmapSetCellDetails (cards, 82, 110, 13, 5, 53);      // set the cells in the bitmap to match the cards
 			SwinGame.LoadFontNamed ("GameFont","Chunkfive.otf", 24);
+			SwinGame.LoadSoundEffectNamed ("Slap", "Slap.wav");
+			SwinGame.LoadSoundEffectNamed ("Punch", "Punch.wav");
         }
 
 		/// <summary>
-		/// Respond to the user input -- with requests affecting myGame
+		/// Respond to the user input -- with requests affecting myGame 
 		/// </summary>
 		/// <param name="myGame">The game object to update in response to events.</param>
 		private static void HandleUserInput (Snap myGame)
@@ -33,8 +35,6 @@ namespace CardGames
 
 			if (myGame.IsStarted) 
 			{
-				SwinGame.LoadSoundEffectNamed ("Slap", "Slap2.wav");
-				SwinGame.PlaySoundEffect ("Slap");
 
 				if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT) &&
 				   SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
@@ -46,14 +46,10 @@ namespace CardGames
 				else if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT))
 				{
 					myGame.PlayerHit (0);
-					SwinGame.LoadSoundEffectNamed ("Slap1", "Slap2.wav");
-					SwinGame.PlaySoundEffect ("Slap1");
 				} 
 				else if (SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
 				{
 					myGame.PlayerHit (1);
-					SwinGame.LoadSoundEffectNamed ("Slap2", "Slap2.wav");
-					SwinGame.PlaySoundEffect ("Slap2");
 				}
 			}
 		}
@@ -71,10 +67,9 @@ namespace CardGames
 			Card top = myGame.TopCard;
 			if (top != null)
 			{
-				SwinGame.DrawText ("" + myGame.Score(0),Color.White, "GameFont",0, 30);
 				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.RoyalBlue, 0, 20);
-				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.RoyalBlue, 0, 30);
-				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.RoyalBlue, 0, 40);
+				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.White ,0, 30);
+				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.White ,0, 40);
 				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 570, 220);
 			}
 			else
