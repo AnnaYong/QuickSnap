@@ -31,11 +31,12 @@ namespace CardGames
 			{
 				myGame.Start ();
 				myGame.FlipNextCard();
+
 			}
 
 			if (myGame.IsStarted) 
 			{
-				SwinGame.PlaySoundEffect ("Slap");
+				
 				if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT) &&
 				   SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
 				{
